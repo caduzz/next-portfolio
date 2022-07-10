@@ -2,7 +2,6 @@
 import Head from 'next/head'
 
 import QualiBox from '../components/QualiBox'
-
 import styles from '../styles/Home.module.css'
 
 export default function Home({ userInfos }) {
@@ -62,7 +61,7 @@ export default function Home({ userInfos }) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch('https://portfolio-cadu-api.herokuapp.com/users/1');
   const userInfos = await res.json();
 
