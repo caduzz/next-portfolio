@@ -18,40 +18,12 @@ export default function Home({ userInfos }) {
           <div className={styles.navbararea}>
             <div className='nav-items'>
               <a href='#inicio' className={styles.naviten} id={styles.active}>
-                <img
-                  className={styles.navicon} 
-                  src={`${mainHost}/svg/home-svg.svg`}
-                  width={200}
-                  height={20}
-                  alt=''
-                />
               </a>
               <a href='#sobre' className={styles.naviten}>
-                <img
-                  className={styles.navicon} 
-                  src={`${mainHost}/svg/person-svg.svg`}
-                  width={20}
-                  height={200}
-                  alt='sobre'
-                />
               </a>
               <a href='#inicio' className={styles.naviten}>
-                <img
-                  className={styles.navicon} 
-                  src={`${mainHost}/svg/file-svg.svg`}
-                  width={20}
-                  height={20}
-                  alt='projetos'
-                />
               </a>
               <a href='#inicio' className={styles.naviten}>
-                <img
-                  className={styles.navicon} 
-                  src={`${mainHost}/svg/email-svg.svg`}
-                  width={20}
-                  height={20}
-                  alt='contatime'
-                />
               </a>
             </div>
           </div>
@@ -67,25 +39,10 @@ export default function Home({ userInfos }) {
                 <div className={styles.socialarea}>
                 </div>
             </div>
-            <div className={styles.inicioinfoarea}>
-              <img 
-                src={`${mainHost}/image/qualificacoes.png`}
-                width={350}
-                height={350}
-                alt='Qualificações'
-              />
-            </div>
-          </div>
-          <div className={styles.iniciofooter}>
-            <img className={styles.wave} src={`${mainHost}/svg/wave-top.svg`} width='auto' alt='Qualificações'/>
-            <img className={styles.arrowdown}  src={`${mainHost}/svg/arrow-svg.svg`} width="30" alt='Qualificações'/>
           </div>
         </section>
         
         <section id={styles.sobre}>
-          <div className={styles.iniciofooter}>
-            <img className={styles.wavebottom} src={`${mainHost}/svg/wave-bottom.svg`} width='auto' alt='Qualificações'/>
-          </div>
         </section>
       </main>
     </div>
@@ -93,12 +50,12 @@ export default function Home({ userInfos }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/user');
+  const res = await fetch('https://portfolio-cadu-api.herokuapp.com/users/1');
   const userInfos = await res.json();
 
   return {
     props: {
-      userInfos: userInfos.list
+      userInfos
     }
   }
 }
