@@ -45,7 +45,7 @@ export default function Home({ userInfos }) {
             </div>
             <div className={styles.inicioinfoarea}>
               <>
-                <QualiBox name="cadu"/>
+                <QualiBox className={styles.qualiBox} name="cadu"/>
               </>
             </div>
           </div>
