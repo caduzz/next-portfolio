@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&family=Work+Sans:wght@500&display=swap');
+
+.main {
+  width: 100%;
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+.navbar{
+  z-index: 99;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 75px;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+  padding: 25px;
+}
+
+.navbararea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.navitems{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 70%;
+}
+
+.naviten{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 50px;
+  height: 50px;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.navicon {
+  filter: invert(100%);
+}
+
+.naviten:focus {
+  outline: 2px solid #348cf0;
+}
+
+#active {
+  background-color: #348cf0;
+}
+
+#inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% -70px);
+  height: 100vh;
+}
+
+.inicioarea {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.inicioinfoarea{
+  display: flex;
+  align-items: center;
+
+  width: 35%;
+
+  margin-left: 80px;
+}
+
+.myinfos{
+  opacity: 0.75;
+}
+.userName{
+  font-size: 50px;
+  font-family: 'Work Sans', sans-serif;
+}
+.serviceName{
+  font-size: 20px;
+  font-family: 'Work Sans', sans-serif;
+  color: #348cf0;
+}
+.iniciofooter{
+  width: calc(100% -70px);
+}
+.wave {
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+.arrowdown {
+  z-index: 2;
+}
+
+#sobre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: #F4F4F4;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
