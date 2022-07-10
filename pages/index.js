@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 
+import QualiBox from '../components/QualiBox'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home({ userInfos }) {
-  const src = userInfos.photo;
 
-  const mainHost = 'https://api-requests.000webhostapp.com'
   return (
     <div className={styles.container}>
       <Head>
@@ -18,12 +18,16 @@ export default function Home({ userInfos }) {
           <div className={styles.navbararea}>
             <div className='nav-items'>
               <a href='#inicio' className={styles.naviten} id={styles.active}>
+                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/home-svg.svg' alt='' width="20"/>
               </a>
               <a href='#sobre' className={styles.naviten}>
+                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/person-svg.svg' alt='' width="20"/>
               </a>
               <a href='#inicio' className={styles.naviten}>
+                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/file-svg.svg' alt='' width="20"/>
               </a>
               <a href='#inicio' className={styles.naviten}>
+                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/email-svg.svg' alt='' width="20"/>
               </a>
             </div>
           </div>
@@ -39,6 +43,15 @@ export default function Home({ userInfos }) {
                 <div className={styles.socialarea}>
                 </div>
             </div>
+            <div className={styles.inicioinfoarea}>
+              <>
+                <QualiBox name="cadu"/>
+              </>
+            </div>
+          </div>
+          <div className={styles.iniciofooter}>
+            <img className={styles.wave} src='https://api-requests.000webhostapp.com/svg/wave-top.svg' alt=''/>
+            <img className={styles.arrowDown} src='https://api-requests.000webhostapp.com/svg/arrow-svg.svg' alt='' width={30}/>
           </div>
         </section>
         

@@ -5,7 +5,7 @@
 }
 
 .container {
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .navbar{
@@ -50,8 +50,8 @@
   width: 50px;
   height: 50px;
 
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 
   background-color: #333;
   border-radius: 50%;
@@ -66,6 +66,7 @@
 }
 
 #active {
+  opacity: 0.75;
   background-color: #348cf0;
 }
 
@@ -75,25 +76,28 @@
   align-items: center;
   justify-content: center;
 
-  width: 100%;
+  width: calc(100% -70px);
   height: 100vh;
 }
 
 .inicioarea {
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 85vh;
 }
 
 .inicioinfoarea{
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
 
   width: 35%;
+
+  margin-left: 150px;
 }
 
 .myinfos{
@@ -109,6 +113,19 @@
   color: #348cf0;
 }
 
+.wave {
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
+.arrowDown {
+  animation: Movment 2.5s ease-in-out infinite;
+}
+
+
 #sobre {
   display: flex;
   flex-direction: column;
@@ -121,12 +138,27 @@
   background-color: #F4F4F4;
 }
 
+@keyframes Movment {
+  0% {
+      transform: translateY(20px);
+  }
+  50% { 
+      transform: translateY(10px);
+  }
+  100% { 
+      transform: translateY(20px);
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
+  .inicioarea{
+    flex-direction: column;
+  }
   .inicioinfoarea{
-    margin-left: 0px;
+    margin: 65px 0;
   }
 }
