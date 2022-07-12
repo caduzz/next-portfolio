@@ -7,6 +7,12 @@
   
     background-color: #222229;
     text-transform: capitalize;
+
+    transition: transform 0.3s, box-shadow 0.1s ;
+}
+.container:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px -2px #222229;
 }
 .content {
     padding: 0 15px;

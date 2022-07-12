@@ -111,7 +111,7 @@
 } 
 
 .wave {
-  z-index: 1;
+  z-index: 0;
   left: 0;
   position: absolute;
   bottom: 0;

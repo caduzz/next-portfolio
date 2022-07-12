@@ -5,15 +5,15 @@ export default function QualificationCard({data}) {
     return (
         <div className={styles.container}>
             <div className={styles.contentProgress}>
-                <div className={styles.progressBar}>
+                <div className={styles.progressBar} style={{background: `conic-gradient(#333339 ${data.progress *3.6}deg, #dddddc 0deg)`}}>
                     <div className={styles.progressNumber}>
-                        {data.progress}<samp className={styles.porcentagen}>%</samp>
+                        {data.progress}<span className={styles.porcentagen}>%</span>
                     </div>
                 </div>
             </div>
             <div className={styles.contentInfos}>
-                <img className={styles.gitIcon} src='https://api-requests.000webhostapp.com/svg/js-svg.svg' alt='' width={60}/>
-                <p className={styles.gitName}>{data.name}</p>
+                <img className={styles.icons} src={data.language_url} alt='' width={55}/>
+                <p className={styles.name}>{data.language}</p>
             </div>
         </div>
     )

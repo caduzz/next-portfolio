@@ -11,6 +11,39 @@ import QualificationCard from '../components/QualificationCard';
 import LanguagesBox from '../components/LanguagesBox'
 import styles from '../styles/Home.module.css'
 
+const qualit = [
+  {
+    language: 'html',
+    language_url: 'https://api-requests.000webhostapp.com/svg/html-svg.svg',
+    progress: 88
+  },
+  {
+    language: 'css',
+    language_url: 'https://api-requests.000webhostapp.com/svg/css-svg.svg',
+    progress: 90
+  },
+  {
+    language: 'javascript',
+    language_url: 'https://api-requests.000webhostapp.com/svg/js-svg.svg',
+    progress: 72
+  },
+  {
+    language: 'react',
+    language_url: 'https://api-requests.000webhostapp.com/svg/react-svg.svg',
+    progress: 65
+  },
+  {
+    language: 'php',
+    language_url: 'https://api-requests.000webhostapp.com/svg/php-svg.svg',
+    progress: 85
+  },
+  {
+    language: 'python',
+    language_url: 'https://api-requests.000webhostapp.com/svg/python-svg.svg',
+    progress: 15
+  },
+]
+
 export default function Home({ userInfos, repoInfos }) {
 
   return (
@@ -51,7 +84,7 @@ export default function Home({ userInfos, repoInfos }) {
             </div>
             <div className={styles.inicioinfoarea}>
               <div>
-                <LanguagesBox className={styles.qualiBox}/>
+                <LanguagesBox array={qualit} className={styles.qualiBox}/>
               </div>
             </div>
           </div>
@@ -68,14 +101,14 @@ export default function Home({ userInfos, repoInfos }) {
           <Swiper
             spaceBetween={50}
             slidesPerView={4}
-            navigation
+            navigation={true}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             className={styles.gitAreaSwiper}
           >
-          {repoInfos.map((item, key) => (
+          {qualit.map((item, key) => (
             <SwiperSlide key={key}>
-              <QualificationCard data={{name: "JavaScript", progress: 80}} />
+              <QualificationCard data={item} />
             </SwiperSlide>
           ))}
           </Swiper>
