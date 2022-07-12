@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&family=Work+Sans:wght@500&display=swap');
 
 .main {
+  overflow: hidden;
   width: 100%;
 }
 
@@ -95,9 +96,7 @@
   align-items: center;
   flex-direction: column;
 
-  width: 35%;
-
-  margin-left: 150px;
+  width: 50%;
 }
 
 .myinfos{
@@ -114,6 +113,7 @@
 } 
 
 .wave {
+  z-index: 1;
   left: 0;
   position: absolute;
   bottom: 0;
@@ -122,9 +122,9 @@
 }
 
 .arrowDown {
+  z-index: 2;
   animation: Movment 2.5s ease-in-out infinite;
 }
-
 
 #sobre {
   display: flex;
@@ -153,14 +153,19 @@
 }
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
   .inicioarea{
     flex-direction: column;
   }
+  .userName{
+    font-size: 35px;
+  }
+  .serviceName{
+    font-size: 20px;
+  } 
   .inicioinfoarea{
+    width: 100%;
+    justify-content: center;
     margin: 65px 0;
   }
+
 }

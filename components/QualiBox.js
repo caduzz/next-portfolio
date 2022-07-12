@@ -27,8 +27,8 @@ export default function QualiBox({ name }) {
                 <img className={styles.icon} src='https://api-requests.000webhostapp.com/svg/php-svg.svg' alt='' width="50"/>
             </div>
         </div>
-        <div className={styles.iconquali} id={styles.pc}>
-            <img src='https://api-requests.000webhostapp.com/svg/pc-svg.svg' alt='' width="100"/>
+        <div id={styles.pc}>
+            <img className='' src='https://api-requests.000webhostapp.com/svg/pc-svg.svg' alt='' width="100"/>
         </div>
     </div>
   )
