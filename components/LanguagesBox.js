@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 
-import styles from '../styles/QualiBox.module.css'
+import styles from '../styles/LanguagesBox.module.css'
 
-export default function QualiBox({ name }) {
+export default function LanguagesBox() {
   return (
     <div className={styles.container}>
         <div className={styles.hoverarea}>
