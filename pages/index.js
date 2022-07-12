@@ -1,8 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link';
-import GitCard from '../components/GitCard';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+import 'swiper/css';
+
+import GitCard from '../components/GitCard';
+import QualificationCard from '../components/QualificationCard';
 
 import LanguagesBox from '../components/LanguagesBox'
 import styles from '../styles/Home.module.css'
@@ -46,9 +50,9 @@ export default function Home({ userInfos, repoInfos }) {
                 </div>
             </div>
             <div className={styles.inicioinfoarea}>
-              <>
+              <div>
                 <LanguagesBox className={styles.qualiBox}/>
-              </>
+              </div>
             </div>
           </div>
           <div className={styles.iniciofooter}>
@@ -61,6 +65,20 @@ export default function Home({ userInfos, repoInfos }) {
           <div className={styles.gitArea}>
             {repoInfos.map((item, key) => <GitCard key={key} data={item} />)}
           </div>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={4}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            className={styles.gitAreaSwiper}
+          >
+          {repoInfos.map((item, key) => (
+            <SwiperSlide key={key}>
+              <QualificationCard data={{name: "JavaScript", progress: 80}} />
+            </SwiperSlide>
+          ))}
+          </Swiper>
         </section>
       </main>
     </div>
