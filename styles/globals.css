@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400&family=Work+Sans:wght@500&display=swap');
+
+* {
+  filter:hue-rotate(50);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -10,11 +18,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  filter:hue-rotate(50);
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
 }
