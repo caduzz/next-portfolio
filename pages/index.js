@@ -118,10 +118,12 @@ export default function Home({ userInfos, repoInfos }) {
 }
 
 export const getServerSideProps = async () => {
-  const userRes = await fetch(`${process.env.APICONECTION_URI || process.env.APICONECTION_URI_PRODUCTION}/api/user`);
+  const url = process.env.APICONECTION_URI;
+
+  const userRes = await fetch(`${url}/api/user`);
   const userInfos = await userRes.json();
 
-  const repoRes = await fetch(`${process.env.APICONECTION_URI || process.env.APICONECTION_URI_PRODUCTION}/api/repository`);
+  const repoRes = await fetch(`${url}/api/repository`);
   const repoInfos = await repoRes.json();
 
   return {
