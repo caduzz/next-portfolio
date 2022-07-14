@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from 'next/head'
-
 import styles from '../styles/LanguagesBox.module.css'
 
 export default function LanguagesBox() {
