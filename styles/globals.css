@@ -10,12 +10,31 @@
 html,
 body {
   padding: 0;
+  background-color: #1a1a1a;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #444;    /* color of the scroll thumb */
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  opacity: 0.8;
 }

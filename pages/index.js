@@ -2,16 +2,17 @@
 import Head from 'next/head'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { SiGmail, SiGithub, SiLinkedin } from 'react-icons/si'
+
 import 'swiper/css';
 
 import GitCard from '../components/GitCard';
 import QualificationCard from '../components/QualificationCard';
 
-import LanguagesBox from '../components/LanguagesBox'
 import styles from '../styles/Home.module.css'
+import Terminal from '../components/Terminal';
 
 export default function Home({ userInfos, repoInfos, languages }) {
-
   return (
     <div className={styles.container}>
       <Head>
@@ -21,48 +22,45 @@ export default function Home({ userInfos, repoInfos, languages }) {
       <main className={styles.main}>
         <nav className={styles.navbar}>
           <div className={styles.navbararea}>
-            <div className='nav-items'>
-              <a href='#Home_inicio__Rib5P' className={styles.naviten} id={styles.active}>
-                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/home-svg.svg' alt='' width="20"/>
+            <div className={styles.navitems}>
+              <a href='#' className={styles.naviten}>Home</a>
+              <a href='#' className={styles.naviten}>About</a>
+              <a href='#' className={styles.naviten}>Projects</a>
+              <a href='#' className={styles.naviten}>Articles</a>
+            </div>
+            <div className={styles.navcontateme}>
+              <a href='#' className={styles.naviten} hrefLang='https://twitter.com/cadu__s' >
+                <SiGmail color='#ffffff' size={22}/>
               </a>
-              <a href='#Home_sobre__3C2xF' className={styles.naviten}>
-                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/person-svg.svg' alt='' width="20"/>
+              <a href='#' className={styles.naviten} hrefLang='https://www.linkedin.com/in/cadu-dev/'>
+                <SiLinkedin color='#ffffff' size={22}/>
               </a>
-              <a href='#inicio' className={styles.naviten}>
-                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/file-svg.svg' alt='' width="20"/>
-              </a>
-              <a href='#inicio' className={styles.naviten}>
-                <img className={styles.navicon} src='https://api-requests.000webhostapp.com/svg/email-svg.svg' alt='' width="20"/>
+              <a href='#' className={styles.naviten} hrefLang='https://github.com/caduzz'>
+                <SiGithub color='#ffffff' size={22}/>
               </a>
             </div>
           </div>
         </nav>
-
         <section id={styles.inicio}>
           <div className={styles.inicioarea}>
             <div className={styles.inicioinfoarea}>
-                <div className={styles.myinfos}>
-                    <h1 className={styles.userName}>{userInfos.name}</h1>
-                    <p className={styles.serviceName}>{userInfos.service}</p>
-                </div>
-                <div className={styles.socialarea}>
-                </div>
-            </div>
-            <div className={styles.inicioinfoarea}>
-              <div>
-                <LanguagesBox array={languages} className={styles.qualiBox}/>
+              <div className={styles.myinfos}>
+                <h1 className={styles.userName}>{userInfos.name}</h1>
+                <p className={styles.serviceName}>{userInfos.service}</p>
+                <p className={styles.serviceDecription}></p>
+              </div>
+              <div className={styles.socialarea}>
               </div>
             </div>
-          </div>
-          <div className={styles.iniciofooter}>
-            <img className={styles.wave} src='https://api-requests.000webhostapp.com/svg/wave-top.svg' alt=''/>
-            <img className={styles.arrowDown} src='https://api-requests.000webhostapp.com/svg/arrow-svg.svg' alt='' width={30}/>
+            <div className={styles.inicioinfoarea}>
+              <Terminal repos={repoInfos} />
+            </div>
           </div>
         </section>
-        
-        <section id={styles.sobre}>
-          <div className={styles.infosuser}>
 
+        <section id={styles.sobre}>
+          <div className={styles.qualiHeader}>
+            <h1>Habilidades</h1>
           </div>
           <Swiper
             spaceBetween={50}
@@ -83,11 +81,11 @@ export default function Home({ userInfos, repoInfos, languages }) {
               },
             }}
           >
-          {languages.map((item, key) => (
-            <SwiperSlide key={key}>
-              <QualificationCard data={item} />
-            </SwiperSlide>
-          ))}
+            {languages.map((item, key) => (
+              <SwiperSlide key={key}>
+                <QualificationCard data={item} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </section>
 

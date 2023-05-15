@@ -1,0 +1,60 @@
+.terminal_container {
+    display: flex;
+    cursor: text;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 550px;
+    height: 300px;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    font-family: monospace;
+}
+
+.title {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.terminal_output {
+    width: 100%;
+    height: 100%;   
+    overflow-y: auto;
+}
+
+.terminal_output::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+}
+  
+.terminal_output::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+}
+  
+.terminal_output::-webkit-scrollbar-thumb {
+    background-color: #444;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+.terminal_input {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    height: 100%;
+    color: #be7cf4;
+    margin-right: 4px;
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #f47cf4;
+    width: 100%;
+}

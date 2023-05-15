@@ -5,9 +5,9 @@ export default function QualificationCard({data}) {
     return (
         <div className={styles.container}>
             <div className={styles.contentProgress}>
-                <div className={styles.progressBar} style={{background: `conic-gradient(#333339 ${data.progress *3.6}deg, #dddddc 0deg)`}}>
+                <div className={styles.progressBar} style={{background: `conic-gradient(#333339 ${data.progress * 3.6}deg, #dddddc 0deg)`}}>
                     <div className={styles.progressNumber}>
-                        {data.progress}<span className={styles.porcentagen}>%</span>
+                        {data.progress}<span className={styles.porcentagem}>%</span>
                     </div>
                 </div>
             </div>
