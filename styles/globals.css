@@ -30,7 +30,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 a {
-  color: inherit;
+  color: #7bb8ff;
   text-decoration: none;
   transition: 0.3s;
 }

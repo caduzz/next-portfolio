@@ -5,7 +5,7 @@ const data = {
             type: 'folder',
             folders: [  
                 {
-                    name: 'file.md',
+                    name: 'Pasta',
                     type: 'folder',
                     folders: []
                 }
@@ -16,25 +16,50 @@ const data = {
             type: 'folder',
             folders: [
                 {
-                    name: 'email',
+                    name: 'Email',
                     type: 'folder',
                     folders: []
                 },
                 {
                     name: 'file.md',
                     type: 'file',
+                    content: `
+                        <h2>File teste</h2>
+                    `,
                     folders: []
                 }
             ]
         },
         {
-            name: 'Contactme',
+            name: 'Contacts',
             type: 'folder',
             folders: [
                 {
-                    name: 'file.md',
+                    name: 'email.txt',
                     type: 'file',
-                    folders: []
+                    folders: [],
+                    content: `
+                        <h1>Title</h1>
+                        <p>Email: cadu0970@gmail.com</p>
+                    `
+                },
+                {
+                    name: 'github.txt',
+                    type: 'file',
+                    folders: [],
+                    content: `
+                        <h1>Title</h1>
+                        <p>Github: <a href="https://github.com/caduzz" target="_blank">Click-me</a></p>
+                    `
+                },
+                {
+                    name: 'linkedin.txt',
+                    type: 'file',
+                    folders: [],
+                    content: `
+                        <h1>Title</h1>
+                        <p>Linkedin: <a href="https://www.linkedin.com/in/cadu-dev/" target="_blank">Click-me</a></p>
+                    `
                 }
             ]
         },
@@ -43,8 +68,9 @@ const data = {
             type: 'folder',
             folders: [
                 {
-                    name: 'file.md',
+                    name: 'file.txt',
                     type: 'file',
+                    content: `<h2>File teste</h2>`,
                     folders: []
                 }
             ]
@@ -58,14 +84,19 @@ export const commands = [
         description: 'Ajuda terminal',
         fn: () => {
             const commandFilter = commands.filter((command) => command.name !== 'help')
-            return commandFilter.map((command) => ` ${command.name} - ${command.description}`).join('\n')
+            return `|================================|
+|      Comandos disponíveis      |
+|================================|
+
+${commandFilter.map((command) => ` ${command.name} - ${command.description}`).join('\n')}
+            `
         }
     },
     {
         name: 'echo',
         description: 'Exibi a message',
         fn: ({args}) => {
-            return ` ${args.join(',')}`
+            return ` ${args.join(' ')}`
         }
     },
     {
@@ -82,13 +113,13 @@ export const commands = [
             const currentFolder = folder.split('/').filter(Boolean);
             let currentLevel = data;
             for (const folderName of currentFolder) {
-            const foundFolder = currentLevel.folders.find(
-                (folder) => folder.name.toLowerCase() === folderName.toLowerCase()
-            );
+                const foundFolder = currentLevel.folders.find(
+                    (folder) => folder.name.toLowerCase() === folderName.toLowerCase()
+                );
                 if (foundFolder) {
                     currentLevel = foundFolder;
                 } else {
-                    return `No such folder or directory`;
+                    return ` Nenhuma pasta ou diretório`;
                 }
             }
             return currentLevel.folders
@@ -101,13 +132,13 @@ export const commands = [
         description: 'Entrar em um diretório',
         fn: ({ args, folder, setFolder }) => {
             let folderName = args[0];
-            if(!folderName) return ' No such file or directory';
+            if(!folderName) return ` Nenhuma pasta ou diretório`;
 
 
             if (folderName === '..') {
                 const parentFolder = folder.split('/').slice(0, -1).join('/');
                 setFolder(parentFolder);
-                return ' Such file or directory';
+                return ' Voltar pasta ou diretório';
             }
 
             const currentFolder = folder.split('/').filter(Boolean);
@@ -119,7 +150,7 @@ export const commands = [
                 if (foundFolder) {
                     currentLevel = foundFolder;
                 } else {
-                    return ` No such file or directory`;
+                    return ` "${folderName}" Não existe tal arquivo ou diretório`;
                 }
             }
 
@@ -132,9 +163,9 @@ export const commands = [
                 } else {
                     setFolder(`/${folderName}`);
                 }
-                return ' Such file or directory';
+                return ` Diretorio "${folderName}" encontrado`;
             } else {
-                return ' No such file or directory';
+                return ` "${folderName}" Não existe tal arquivo ou diretório`;
             }
         },
     },
@@ -143,7 +174,7 @@ export const commands = [
         description: 'Criar um diretório',
         fn: ({ args, folder }) => {
             const folderName = args[0];
-            if (!folderName) return 'No folder name specified.';
+            if (!folderName) return ` pasta ou diretório`;
     
             const currentFolder = folder.split('/').filter(Boolean);
             let currentLevel = data;
@@ -154,7 +185,7 @@ export const commands = [
                 if (foundFolder) {
                     currentLevel = foundFolder;
                 } else {
-                    return 'No such folder or directory';
+                    return ' Nenhuma pasta ou diretório';
                 }
             }
     
@@ -164,50 +195,78 @@ export const commands = [
                 folders: []
             });
     
-            return `Folder "${folderName}" created successfully.`;
+            return ` Pasta "${folderName}" criada com sucesso.`;
         }
     },
     {
         name: 'rmdir',
-        description: 'Remover um diretório vazio',
-        fn: ({ args, folder, setFolder }) => {
-            const folderName = args[0];
-            if (!folderName) return 'No folder name specified.';
+        description: 'Excluir um diretório',
+        fn: ({ args, folder }) => {
+          const foldername = args[0]
+          const currentFolder = folder.split('/').filter(Boolean);
+      
+          if (foldername === currentFolder[0]) {
+            data.folders = data.folders.filter((folder) => folder.name !== foldername)
+            return ` Pasta ${foldername} excluída`;
+          }
+      
+          let currentLevel = data;
+          for (const folderName of currentFolder) {
+            const foundFolder = currentLevel.folders.find(
+              (folder) => folder.name.toLowerCase() === folderName.toLowerCase()
+            );
+            if (foundFolder) {
+              currentLevel = foundFolder;
+            } else {
+              return ` Pasta ${foldername} não encontrada`;
+            }
+          }
+      
+          const foundFolderIndex = currentLevel.folders.findIndex(
+            (folder) => folder.name.toLowerCase() === foldername.toLowerCase()
+          );
+          if (foundFolderIndex !== -1) {
+            const folderToDelete = currentLevel.folders[foundFolderIndex];
+            if (folderToDelete.type !== 'folder') {
+              return ` Erro: ${foldername} não é uma pasta`;
+            }
+            currentLevel.folders.splice(foundFolderIndex, 1);
+            return ` Pasta ${foldername} excluída`;
+          } else {
+            return ` Pasta ${foldername} não encontrada`;
+          }
+        }
+    },
+    {
+        name: 'show',
+        description: 'Exibir o conteúdo de um arquivo',
+        fn: ({ args, folder }) => {
+            const fileName = args[0];
+            if (!fileName) return 'Nenhum nome de arquivo especificado.';
     
             const currentFolder = folder.split('/').filter(Boolean);
             let currentLevel = data;
-            let parentLevel = null;
-            let targetFolderIndex = -1;
     
             for (const folderName of currentFolder) {
-                parentLevel = currentLevel;
-                const foundFolderIndex = currentLevel.folders.findIndex(
+                const foundFolder = currentLevel.folders.find(
                     (folder) => folder.name.toLowerCase() === folderName.toLowerCase()
                 );
-                if (foundFolderIndex !== -1) {
-                    currentLevel = currentLevel.folders[foundFolderIndex];
-                    targetFolderIndex = foundFolderIndex;
+                if (foundFolder) {
+                    currentLevel = foundFolder;
                 } else {
-                    return 'No such folder or directory';
+                    return ' Nenhum diretório ou arquivo encontrado.';
                 }
             }
     
-            if (
-                currentLevel.type !== 'folder' ||
-                currentLevel.folders.length > 0
-            ) {
-                return 'Cannot remove a non-empty folder.';
+            const foundFile = currentLevel.folders.find(
+                (file) => file.name.toLowerCase() === fileName.toLowerCase() && file.type === 'file'
+            );
+            if (foundFile && foundFile.content) {
+                return foundFile.content;
+            } else {
+                return ' Nenhum arquivo encontrado ou sem conteúdo.';
             }
-    
-            parentLevel.folders.splice(targetFolderIndex, 1);
-    
-            // If the current directory is being removed, move back to the parent directory
-            if (currentFolder.length === 1 && currentFolder[0] === folderName) {
-                setFolder('');
-            }
-    
-            return `Folder "${folderName}" removed successfully.`;
-        }
+        },
     },
     {
         name: 'github',
@@ -220,12 +279,12 @@ export const commands = [
                     return ' --help or -h: lista os comandos\n --list or -l: lista os projetos\n --sersh -s <string> Busca um projeto'
                 case (args[0] === '--search' || args[0] === '-s'):
                     if (!args[1]) 
-                        return 'Command not found. --search -s <string> Busca um projeto'
+                        return ' Comando não encontrado. --search -s <string> Busca um projeto'
                     const repo = repos.filter(repo => repo.name.includes(args[1]))
                     return repo.map((repo) => 
                         ` <a style="color: #f47cbe; text-decoration: underline;" target="_blank" href='${repo.url}'>${repo.name}</a>`).join('\n')
                 default:
-                    return `Command not found. --help or -h para listar os comandos`
+                    return ` Comando não encontrado. --help ou -h para listar os comandos`
             }
         }
     }

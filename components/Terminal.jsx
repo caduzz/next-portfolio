@@ -3,16 +3,9 @@ import style_terminal from '../styles/Terminal.module.css'
 
 import { commands } from '../utils/commands'
 
-const initialMessage = `<span style="color: #a1a1a1">
-| Bem vindo
-| help para qualquer duvida
-
-</span>`
-
 export default function Terminal({ repos }) {
-    const [output, setOutput] = useState(initialMessage);
+    const [output, setOutput] = useState('');
     const [command, setCommand] = useState('');
-    const [userName, setUserName] = useState('root')
 
     const [commandHistory, setCommandHistory] = useState([]);
     const [historyIndex, setHistoryIndex] = useState(-1);
@@ -56,7 +49,7 @@ export default function Terminal({ repos }) {
         const selcted_command = commands.find(command_s => command_s.name === name)
         if(!selcted_command){
             if(!name){
-                return setOutput((prevOutput) => prevOutput + `<span style="color: #be7cf4">user@web<span style="color: #ffffff">:<span style="color: #f03498">~</span>$</span></span>\n`);
+                return setOutput((prevOutput) => prevOutput + `<span style="color: #be7cf4">user@web<span style="color: #ffffff">:<span style="color: #f03498">~${folder}</span>$</span></span>\n`);
             }
             setCommand('');
             return setOutput((prevOutput) => prevOutput + `<span style="color: #f04646">$ Command '${command}' not found</span> \n`);
@@ -66,7 +59,6 @@ export default function Terminal({ repos }) {
             args, 
             repos, 
             folder,
-            setUserName,
             setFolder,
             output: (value) => setOutput(value)
         })
@@ -90,29 +82,35 @@ export default function Terminal({ repos }) {
 
     return (
         <div className={style_terminal.container}>
-        <div className={style_terminal.terminal_container} onMouseUp={handleClick}>
-            <div className={style_terminal.terminal_output} ref={terminalOutputRef}>
-                <pre> 
-                    <div dangerouslySetInnerHTML={{ __html: output }}/>
-                    <div className={style_terminal.terminal_input}>
-                        <div 
-                            className={style_terminal.prompt}
-                        >
-                            user@web<span style={{color: '#fff'}}>:<span style={{color: '#f03498'}}>~{folder}</span>$</span>
+            <div className={style_terminal.terminal_container} onMouseUp={handleClick}>
+                <div className={style_terminal.terminal_output} ref={terminalOutputRef}>
+                    <pre> 
+                    <span style={{width: '100%', marginBottom: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#a1a1a1'}}>
+                            <span style={{color:'#be7cf4', fontSize: 15, marginBlock: 5}}>
+                                ==== |  Bem-vindo ao Meu Portfolio!  | ====
+                            </span>
+                            <span style={{color: '#348cf0'}}>v1.0 Beta</span>
+                        </span>
+                        <div dangerouslySetInnerHTML={{ __html: output }} />
+                        <div className={style_terminal.terminal_input}>
+                            <div 
+                                className={style_terminal.prompt}
+                            >
+                                user@web<span style={{color: '#fff'}}>:<span style={{color: '#f03498'}}>~{folder}</span>$</span>
+                            </div>
+                            <input
+                                ref={inputRef}
+                                className={style_terminal.input}
+                                type="text"
+                                value={command}
+                                onChange={handleInputChange}
+                                onKeyDown={handleKeyDown}
+                                autoFocus
+                            />
                         </div>
-                        <input
-                            ref={inputRef}
-                            className={style_terminal.input}
-                            type="text"
-                            value={command}
-                            onChange={handleInputChange}
-                            onKeyDown={handleKeyDown}
-                            autoFocus
-                        />
-                    </div>
-                </pre>
+                    </pre>
+                </div>
             </div>
-        </div>
         </div>
     );
 }

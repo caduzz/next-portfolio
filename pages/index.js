@@ -91,9 +91,11 @@ export default function Home({ userInfos, repoInfos, languages }) {
 
         <section id={styles.progetos}>
           <div className={styles.gitArea}>
-            {repoInfos.map((item, key) => <GitCard key={key} data={item} />)}
+            {repoInfos.filter((item, index) => index <= 5).map((item, key) => <GitCard key={key} data={item} />)}
           </div>
         </section>
+
+        <iframe src='http://localhost:3000/terminal' style={{width: '100%', border: 'none'}}></iframe>;
       </main>
     </div>
   )
